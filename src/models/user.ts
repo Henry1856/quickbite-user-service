@@ -12,7 +12,7 @@ const addressSchema = new mongoose.Schema({
         type:String, required:true
     },
     state:{
-        type:string
+        type:String
     },
     postalCode:{
         type:String
@@ -61,13 +61,13 @@ const userSchema = new mongoose.Schema({
 userSchema.index({email:1}, 
 {unique:true});
 
-userSchema.methods.toJSON = function () {
+userSchema.methods.toJSON = function (this: any) {
   const user = this.toObject();
   delete user.passwordHash;
   return user;
 };
 
-userSchema.methods.comparePassword = async function (plainPassword) {
+userSchema.methods.comparePassword = async function (this: any, plainPassword: string): Promise<boolean> {
   return bcrypt.compare(plainPassword, this.passwordHash);
 };
 

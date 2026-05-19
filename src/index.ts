@@ -1,9 +1,11 @@
 import express from 'express';
 
 import cors from 'cors';
-import 'dotenv/config'
-import connectDb from './config/db.js';
-import healthRoutes from './routes/healthRoutes.js';
+import 'dotenv/config';
+// import connectDb from './config/db.ts';
+// import healthRoutes from './routes/healthRoutes.ts';
+import connectDb from './config/db';
+import healthRoutes from './routes/healthRoutes';
 
 const app = express();
 
